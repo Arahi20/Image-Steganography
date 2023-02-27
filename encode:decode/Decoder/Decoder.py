@@ -4,14 +4,13 @@ from PIL import Image
 def decode_image(image_path):
     image = Image.open(image_path)
 
-    # Decode message from image
     binary_message = ""
     for y in range(image.height):
         for x in range(image.width):
             # Get RGB values of pixel
             r, _, _ = image.getpixel((x, y))
 
-            # Get the least significant bit of the red value
+            # Get the least significant bit of the red value this was where our message was hidden
             bit = r & 0x01
 
             # Add the bit to the binary message
